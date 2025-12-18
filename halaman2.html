@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Karya</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="content animate-in">
+    <nav>
+        <ul>
+             <li><a class="nav-button" href="halaman1.html">Beranda</a></li>
+            <li><a class="nav-button" href="halaman2.html">Portofolio</a></li>
+            <li><a class="nav-button" href="halaman3.html">Keterampilan</a></li>
+            <li><a class="nav-button" href="halaman4.html">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <h1>Portofolio Karya</h1>
+
+    <section class="portfolio-item">
+        <h2>Proyek Akademik</h2>
+        <table class="project-table">
+            <tr>
+                <th>Nama Proyek</th>
+                <th>Tahun</th>
+                <th>Deskripsi</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>Takraw Development Program</td>
+                <td>2025</td>
+                <td>Program pelatihan teknik, pembinaan mental, dan kompetisi internal untuk mencetak atlet berprestasi</td>
+                <td>Aktif</td>
+            </tr>
+            <tr>
+                <td>Ketua Panitia & Pelatih</td>
+                <td>2025</td>
+                <td>Berperan sebagai pelatih dan koordinator kegiatan UKM Sepak Takraw UPGRIS</td>
+                <td>Aktif</td>
+            </tr>
+            <tr>
+                <td>Analisis Statistik Performa Atlet</td>
+                <td>2025</td>
+                <td>Pengolahan data latihan dan pertandingan untuk evaluasi teknik dan stamina</td>
+                <td>Aktif</td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="portfolio-item">
+        <h2>Proyek Unggulan: UKM Sepak Takraw</h2>
+        <img src="bola.jpg" alt="Screenshot proyek unggulan sepak takraw" class="project-image">
+        <p>
+           Proyek ini bertujuan untuk merancang sistem informasi berbasis database yang mendukung pengelolaan data anggota, jadwal latihan, pencatatan prestasi, dan inventaris perlengkapan UKM Sepak Takraw. 
+        </p>
+        <h3>Teknologi yang Digunakan:</h3>
+        <ul class="skills-list">
+            <li>HTML5</li>
+            <li>CSS3</li>
+        
+        </ul>
+    </section>
+
+    <section class="portfolio-item">
+        <h2>Video sepak takraw</h2>
+          <iframe width="400" height="200" src="https://www.youtube.com/embed/H2LIlu7_-xc" 
+          title="The amazing game - Sepak Takraw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+          </iframe>
+            
+        <p>
+            SEPAK TAWRAW highlight
+        </p>
+    </section>
+
+    <section class="portfolio-item">
+        <h2>Prestasi & kegiatan</h2>
+        <ul>
+            <li>🥇 Juara 1 Doubel event Putra Pekan Olahraga Provinsi 2025</li>
+            <li>🥇 Juara 2 Regu Putra Pekan Olahraga Provinsi 2025</li>
+        </ul>      
+        <p>Ikuti saya di Instagram: <a href="https://www.instagram.com/ukm.sepaktakraw_upgris?igsh=MWk4cDNzM3RhN25reA==" target="_blank" rel="noopener noreferrer">ukm.sepaktakraw_upgris</a></p>
+     </section>
+    </div>
+
+    <script>
+        // Navigation exit animation: play page-exit on .content then navigate
+        (function () {
+            document.addEventListener('DOMContentLoaded', function () {
+                const content = document.querySelector('.content');
+                if (content && !content.classList.contains('animate-in')) content.classList.add('animate-in');
+
+                const navLinks = document.querySelectorAll('a.nav-button');
+                navLinks.forEach(link => {
+                    if (link.target && link.target.toLowerCase() === '_blank') return;
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const href = this.getAttribute('href');
+                        if (!content) { window.location.href = href; return; }
+                        content.classList.remove('animate-in');
+                        content.classList.add('page-exit');
+                        let done = false;
+                        const onEnd = function () { if (done) return; done = true; content.removeEventListener('animationend', onEnd); window.location.href = href; };
+                        content.addEventListener('animationend', onEnd);
+                        setTimeout(onEnd, 600);
+                    });
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>

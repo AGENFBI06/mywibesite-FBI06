@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Saya</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="content animate-in">
+    <nav>
+        <ul>
+            <li><a class="nav-button" href="halaman0.html">Home</a></li>
+            <li><a class="nav-button" href="halaman2.html">Portofolio</a></li>
+            <li><a class="nav-button" href="halaman3.html">Keterampilan</a></li>
+            <li><a class="nav-button" href="halaman4.html">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <div class="profile">
+        <img src="profil.jpg" alt="Foto Profil">
+        <h1>MUHAMMAD ILHAM FEBRIANTO</h1>
+        <p>Mahasiswa FTI</p>
+    </div>
+
+    <section>
+        <h2>Tentang Saya</h2>
+        <p>
+            Seorang mahasiswa yang tertarik dengan pengembangan web dan desain interface. 
+            Selalu berusaha mengembangkan diri dan mencari solusi kreatif dalam setiap tantangan.
+        </p>
+    </section>
+
+    <section class="goals">
+        <h2>Tujuan Karier</h2>
+        <ul>
+            <li>• Menjadi Full Stack Developer profesional</li>
+            <li>• Mengembangkan proyek yang bermanfaat</li>
+            <li>• Berkontribusi dalam komunitas teknologi</li>
+        </ul>
+    </section>
+</section>
+    </div>
+
+    <script>
+        // Navigation exit animation: play page-exit on .content then navigate
+        (function () {
+            document.addEventListener('DOMContentLoaded', function () {
+                const content = document.querySelector('.content');
+                if (content && !content.classList.contains('animate-in')) content.classList.add('animate-in');
+
+                const navLinks = document.querySelectorAll('a.nav-button');
+                navLinks.forEach(link => {
+                    // ignore external/new-tab links
+                    if (link.target && link.target.toLowerCase() === '_blank') return;
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const href = this.getAttribute('href');
+                        if (!content) { window.location.href = href; return; }
+                        content.classList.remove('animate-in');
+                        content.classList.add('page-exit');
+                        let done = false;
+                        const onEnd = function () { if (done) return; done = true; content.removeEventListener('animationend', onEnd); window.location.href = href; };
+                        content.addEventListener('animationend', onEnd);
+                        setTimeout(onEnd, 600);
+                    });
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>

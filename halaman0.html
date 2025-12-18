@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Welcome - FBI06</title>
+	<link rel="stylesheet" href="style.css">
+	<style>
+		/* Small landing tweaks kept local to this page */
+		.landing { min-height: calc(100vh - 48px); display: flex; align-items: center; justify-content: center; }
+		.landing .box { text-align: center; gap: 12px; display: flex; flex-direction: column; align-items: center; }
+		.welcome-title { font-size: 2rem; color: #0f172a; margin-bottom: 6px; }
+		.enter-btn { font-size: 1.05rem; padding: 12px 26px; }
+	</style>
+</head>
+<body>
+
+	<div class="content landing animate-in">
+		<div class="box">
+			<h1 class="welcome-title">Welcome to FBI06 website</h1>
+			<p class="muted">Selamat datang — klik tombol di bawah untuk masuk ke situs.</p>
+			<a href="halaman1.html" class="nav-button enter-btn">Masuk</a>
+		</div>
+	</div>
+</body>
+	<script>
+		// Play an exit animation on the landing content before navigating.
+		document.addEventListener('DOMContentLoaded', function () {
+			const enter = document.querySelector('.enter-btn');
+			const content = document.querySelector('.content');
+			// Ensure entry animation class is present (safety)
+			if (content && !content.classList.contains('animate-in')) content.classList.add('animate-in');
+
+			if (!enter) return;
+
+			enter.addEventListener('click', function (e) {
+				e.preventDefault();
+				const href = this.getAttribute('href');
+				if (!content) { window.location.href = href; return; }
+
+				// remove entry and trigger exit animation
+				content.classList.remove('animate-in');
+				content.classList.add('page-exit');
+
+				// After animation ends, navigate
+				const onAnimEnd = function () {
+					content.removeEventListener('animationend', onAnimEnd);
+					// small delay to ensure animation finishes visually
+					window.location.href = href;
+				};
+
+				content.addEventListener('animationend', onAnimEnd);
+			});
+		});
+	</script>
+</html>
+</body>
+</html>
+

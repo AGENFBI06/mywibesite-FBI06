@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keterampilan & Pengalaman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="content animate-in">
+    <nav>
+        <ul>
+            <li><a class="nav-button" href="halaman1.html">Beranda</a></li>
+            <li><a class="nav-button" href="halaman2.html">Portofolio</a></li>
+            <li><a class="nav-button" href="halaman3.html">Keterampilan</a></li>
+            <li><a class="nav-button" href="halaman4.html">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <h1>Keterampilan & Pengalaman</h1>
+
+    <section class="section">
+        <h2>Keterampilan dan Kemampuan</h2>
+        
+        <div class="skill-category">
+            <h3>Bahasa Pemrograman</h3>
+            <div class="skills-grid">
+                <div class="skill-item">HTML5</div>
+                <div class="skill-item">CSS3</div>
+                <div class="skill-item">JavaScript</div>
+                <div class="skill-item">Python</div>
+            </div>
+        </div>
+
+        <div class="skill-category">
+            <h3>Framework & Library</h3>
+            <div class="skills-grid">
+                <div class="skill-item">React.js</div>
+                <div class="skill-item">Bootstrap</div>
+                <div class="skill-item">Laravel</div>
+                <div class="skill-item">Flutter</div>
+            </div>
+        </div>
+
+        <div class="skill-category">
+            <h3>Perangkat Lunak</h3>
+            <div class="skills-grid">
+                <div class="skill-item">VS Code</div>
+                <div class="skill-item">Git</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Pengalaman dan Pendidikan</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2023 - Sekarang</div>
+                <h3>Universitas PGRI Semarang</h3>
+                <p>Mahasiswa Teknik Informatika</p>
+                <p>IPK: 3.65</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2025</div>
+                <h3>Ketua Panitia & kePelatihan</h3>
+                <p>Berperan sebagai pelatih dan koordinator kegiatan UKM Sepak Takraw UPGRIS</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2023</div>
+                <h3>Freelance UI/UX Designer</h3>
+                <p>Merancang antarmuka pengguna untuk berbagai aplikasi mobile dan web</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2020 - 2023</div>
+                <h3>SMA ISLAM SULTAN AGUNG KALINYAMATAN</h3>
+                <p>Jurusan MIPA</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Testimoni</h2>
+
+        <div class="testimonial">
+            <p>"Febri adalah seorang developer yang sangat detail dan bertanggung jawab. 
+               Kemampuannya dalam menyelesaikan masalah dan menghadirkan solusi kreatif sangat membantu 
+               dalam pengembangan proyek kami."</p>
+            <div class="testimonial-author">Rendi cumolonimbus</div>
+            <div class="testimonial-role">Project Manager - Tech Solutions</div>
+        </div>
+
+        <div class="testimonial">
+            <p>"Kolaborasi dengan Febri dalam proyek website kami sangat menyenangkan. 
+               Dia memiliki pemahaman yang baik tentang kebutuhan klien dan selalu memberikan hasil 
+               yang melebihi ekspektasi."</p>
+            <div class="testimonial-author">Arya tanpajaitan</div>
+            <div class="testimonial-role">CEO - Digital Creative Agency</div>
+        </div>
+
+        <div class="testimonial">
+            <p>"Sebagai rekan sekelompok dalam proyek kuliah, Febri selalu bisa diandalkan. 
+               Kemampuan teknis dan komunikasinya sangat membantu kelancaran pengerjaan tugas tim."</p>
+            <div class="testimonial-author">Rafi Kampas Rem</div>
+            <div class="testimonial-role">Rekan Mahasiswa - Universitas Teknologi Digital</div>
+        </div>
+        </section>
+        </div>
+
+    <script>
+        // Navigation exit animation: play page-exit on .content then navigate
+        (function () {
+            document.addEventListener('DOMContentLoaded', function () {
+                const content = document.querySelector('.content');
+                if (content && !content.classList.contains('animate-in')) content.classList.add('animate-in');
+
+                const navLinks = document.querySelectorAll('a.nav-button');
+                navLinks.forEach(link => {
+                    if (link.target && link.target.toLowerCase() === '_blank') return;
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const href = this.getAttribute('href');
+                        if (!content) { window.location.href = href; return; }
+                        content.classList.remove('animate-in');
+                        content.classList.add('page-exit');
+                        let done = false;
+                        const onEnd = function () { if (done) return; done = true; content.removeEventListener('animationend', onEnd); window.location.href = href; };
+                        content.addEventListener('animationend', onEnd);
+                        setTimeout(onEnd, 600);
+                    });
+                });
+            });
+        })();
+    </script>
+
+    </body>
+    </html>
